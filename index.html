@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <a src="assets/javascript/game.js"></a>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Gaegu|Monoton" rel="stylesheet"/>
+        <title>WordGuessGame</title>
+</head>
+<body>
+<div class="hangman">
+        <nav class="navbar">
+
+                <h1>HANGMAN</h1>
+            <div class="circle">CLASSIC ROCK
+            </div>
+        </nav>
+    
+    <div class="main">
+
+        <img class="circle2" src="data:image/jpeg;base64,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">
+            <div class="intro">GUESS THE TITLE OF A CLASSIC ROCK SONG</div>
+            <div class="start">PRESS ANY KEY TO GET STARTED</div>
+            <div class="wins">WINS</div>
+        
+            <div class="word">
+                <h2><b>CURRENT WORD</b></h2>
+            </div>
+
+        <form class="guess">
+        
+            <input type="text" class="guessletter" maxlength="1"
+                placeholder="Enter Letter"/>
+            <button type="submit" class="guessbutton">Guess</button>
+        </form>
+
+            <div class="remain">NUMBER OF GUESSES REMAINING
+
+                <input type="text" class="guessletter" maxlength="1"
+                placeholder="_"/>
+            </div>
+
+            <div class="wrong">LETTERS ALREADY GUESSED
+                <div class="wrongletters"></div>
+            </div>
+            
+        </div>
+
+</div>
+</body>
+</html>
