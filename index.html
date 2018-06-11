@@ -3,29 +3,69 @@
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
          <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
         <link href="https://fonts.googleapis.com/css?family=Gaegu|Monoton" rel="stylesheet"/>
         <title>WordGuessGame</title>
 </head>
 <body>
-    <div class="main container">
-            <h1>HANGMAN</h1>
-            <p>USE THE ALPHABET BELOW TO GUESS THE WORD</p>
-    </div>
-    <div class="main container">
-        <div id="buttons">
-        </div>
-        <p id="catagoryName">GUESS THE TITLE OF A CLASSIC ROCK SONG</p>
-        <div id="currentWord"></div>
-        <p id="remainingGuesses"></p>
-        <p id="wins"></p>
-        <div class="container">
-            <img src="assets/images/hangman.png" alt="hangman">
-            <button id="reset">PLAY AGAIN</button>
-        </div>
+    
+        <header>
+            <h1>Word Guess Game</h1>
+            <h2>Don't Let The Snowman Melt Away!</h2>
+        </header>
+
+<div class="mainContainer">
+    
+    <div class="mainContainerLeft">
+                <div id="rightGuessTitle">
+                        Right Guesses
+                </div>
+                <div class="rightGuess">
+                </div>
+
+                <div id="wrongGuessTitle">
+                        Wrong Guesses
+                </div>
+
+                <div class="wrongGuess">
+                </div>
     </div>
 
-<footer></footer>
+    <div class="mainContainerCenter">
+
+        <div id='snowmanImage'>
+        
+        </div>
+
+        <div class="underScore" id="currentWord">_ _ _ _</div>
+
+    </div>
+    
+    <div class="mainContainerRight">
+
+                <div id="guessesLeftTitle">
+                        Number of Guesses Left  
+                </div>
+                <div id='guessesLeft'>9
+                </div>
+        
+                <div id="winsTitle">
+                        Number of Wins  
+                </div>
+                <div id='wins'>0
+                </div>
+        
+                <div id="losesTitle">
+                        Number of Loses  
+                </div>
+                <div id='loses'>0
+                </div>
+
+    </div>     
+</div>   
+
+<footer>DLMDesignInc 2018</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>

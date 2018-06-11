@@ -1,112 +1,95 @@
-
 $(document).ready(function() {
 
-var alphabet;         //array of letters to chose from
-
-var previuosGuesses;  //stored guesses
-var currentWord;      //the selected word
-var remainingGuessCount;//number guesses remaining
-var wins;               // number of times the word is solved
-
 //array, make a list of words for computer to choose from
-var wordList = ["back in black", "kasmhir", "stairway to heaven",
-"sweet emotion", "comfortably numb", "baba o'riley",
-"crazy  train", "hotel california", "imagine", "more than a feeling",
-"smoke on the water", "rocket man", "barracuda", "cocaine",
-"tom sawyer", "black dog", "free fallin", "free bird", "paranoid",
-"we will rock you", "enter sandman", "time", "money"];
+var wordList = ["snowman", "mittens", "shovel", "icicles", "frost", "ice", "blizzard", "toboggan", "frozen", "hockey", "snowball", "snowflake", "sweater", "coat", "scarf", "ski","skating", "cold", "boots",];
 console.log(wordList)
+var rightWord = [];
+var wrongWord = [];
+var underScore = [];
+var wins = 0;
+var loses = 0;
 
-//array, make a list of letters for computer to choose from
-var alphabet = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-var main = $("body");
-var buttons = main.find("#buttons");
+var wrongLetter = [];
+var guessesLeft = 9;
 
-// create the alphabet buttons
-//var buttons = function () {
- // letterButton = document.getElementById('buttons');
- // letters = document.createElement('ul');
-//1. create for-loop to iterate through alphabet array 
-for (var i=0; i<alphabet.length; i++) {
-    //inside loop
-//2. create a variable named "letterButton" equal to $(",button>")
-var letterButton = $("<button>");
-//3. then give "letterButton" classes
-letterButton.addClass(".alphabet li")
-//4. give "letterButton" attributes
-letterButton.attr("data-letter", alphabet[i]);
-//5.give each "letterButton" a text
-letterButton.text(alphabet[i]);
-//6 append to #buttons div
-buttons.append(letterButton);
+document.getElementById('guessesLeft').textContent = guessesLeft;
 
-  }
- 
 
-// Create geusses 
-var result = function() {
-  wordHolder = document.getElementById('currentWord');
-  correct = document.createElement('ul');
-// create for-loop to determine result of guesses
-  for (var i = 0; i < currentWord.length; i++) {
-    correct.setAttribute('id', 'currrentWord');
-    guess = document.createElement('li');
-    guess.setAttribute('class', 'guess');
-    if (currentWord[i] === "-") {
-      guess.innerHTML = "-";
-      space = 1;
-    } else {
-      guess.innerHTML = "_";
+
+//select word randomly at beginning of game
+var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+
+var docUnderScore = document.getElementsByClassName('underScore');
+var docRightGuess = document.getElementsByClassName('rightGuess');
+var docWrongGuess =  document.getElementsByClassName('wrongGuess');
+
+
+console.log(randomWord)
+//make underscores match selected word
+var makeUnderscores = () => {
+    for (var i = 0; i < randomWord.length; i++) {
+        underScore.push('_   ');
     }
-  }
-    geusses.push(guess);
-    wordHolder.appendChild(correct);
-    correct.appendChild(guess);
-}
+    //displayon screen
+    document.getElementById('currentWord').textContent = underScore.join(' ');
+    return underScore;
 
-// Show remaining guesses
-  var showRemainingGuesses = document.getElementById("remainingGuesses")
-  var comments = function() {
-  showRemainingGuesses.innerHTML = "You have " + guesses + " guesses remaing";
-  if (guesses < 1) {
-    showRemainingGuesses.innerHTML = "Game Over";
-  }
-  for (var i = 0; i < guesses.length; i++) {
-    if (counter + space === guesses.length) {
-      showRemainingGuesses.innerHTML = "You Win!";
+}
+console.log(makeUnderscores());
+
+function winLose() {
+    
+    if (winCounter === randomWord.length)
+{
+        alert("You Win!")
+}
+    else if (guessesLeft === 0)
+{            
+    alert("You Lost!")
+}
+}
+//user input/guesses
+document.onkeyup = function(event) {
+    event.preventDefault();
+    
+    var userGuess = event.key;
+    console.log(userGuess);
+
+    if(randomWord.indexOf(userGuess) > -1) {
+
+//check if user's guess is correct
+//if correct, push to right array
+        rightWord.push(userGuess);
+        console.log(rightWord);
+//put letter in place of underscore
+        underScore[randomWord.indexOf(userGuess)] = userGuess;
+        docUnderScore[0].innerHTML = underScore.join('');
+        docRightGuess[0].innerHTML = rightWord;
+        if(underScore.join('') == randomWord) {
+            alert('You Win!');
+            winCounter++;
+            winLose();
+        }
     }
-  }
-}
-  // Play
-  var play = function() {
-   
-    generateRandomWord = wordList[Math.floor(Math.random() * wordList.length)];
-    currentWord = generateRandomWord[Math.floor(Math.random() * generateRandomWord.length)];
-    currentWord = currentWord.replace("-");
-    console.log(currentword);
-    buttons();
+    else {
 
-    guesses = [];
-    remainingGuesses = 8;
-    counter = 0;
-    space = 0;
-    result();
-    comments();
-  }
+//if wrong, push to wrong array
+        wrongWord.push(userGuess);
+        docWrongGuess[0].innerHTML = wrongWord;
+        console.log(wrongWord);
+    }
 
 
-    // Reset button
+};
 
-    document.getElementById('reset').onclick = function() {
-     correct.parentNode.removeChild(correct);
-     letters.parentNode.removeChild(letters);
-     
-     context.clearRect(0, 0, 400, 400);
-     play();
-   }
 
-    //$("#reset").on("click", function() {
-     // $("#currentWord").empty();
-    //}
+});
 
-  });
+
+
+
+
+
+
+
+
