@@ -1,23 +1,21 @@
 $(document).ready(function() {
 
 //array, make a list of words for computer to choose from
-var wordList = ["snowman", "mittens", "shovel", "icicles", "frost", "ice", "blizzard", "toboggan", "frozen", "hockey", "snowball", "snowflake", "sweater", "coat", "scarf", "ski","skating", "cold", "boots",];
-console.log(wordList)
-var rightWord = [];
-var wrongWord = [];
-var underScore = [];
-var wins = 0;
-var loses = 0;
-const maxTries = 9;
+    var wordList = ["snowman", "mittens", "shovel", "icicles", "frost", "ice", "blizzard", "toboggan", "frozen", "hockey", "snowball", "snowflake", "sweater", "coat", "scarf", "ski","skating", "cold", "boots",];
+        console.log(wordList)
+    var rightWord = [];
+    var wrongWord = [];
+    var underScore = [];
+    var wins = 0;
+    var loses = 0;
+    const maxTries = 9;
+    var wrongLetter = [];
+    var guessesLeft = 9;
 
-
-var wrongLetter = [];
-var guessesLeft = 9;
-
-
+//update photo with the number of guesses
 document.getElementById('guessesLeft').textContent = guessesLeft;
 
-updateSnowmanImage();
+    updateSnowmanImage();
 
 function updateSnowmanImage() {
     var img = document.getElementById("theImage");
@@ -32,14 +30,14 @@ var docUnderScore = document.getElementsByClassName('underScore');
 var docRightGuess = document.getElementsByClassName('rightGuess');
 var docWrongGuess =  document.getElementsByClassName('wrongGuess');
 
-
 console.log(randomWord)
+
 //make underscores match selected word
 var makeUnderscores = () => {
     for (var i = 0; i < randomWord.length; i++) {
         underScore.push('_   ');
     }
-    //displayon screen
+    //display on screen
     document.getElementById('currentWord').textContent = underScore.join(' ');
     return underScore;
 
